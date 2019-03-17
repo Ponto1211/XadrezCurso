@@ -45,6 +45,19 @@ public class Tabuleiro {
 		p.posicao = pos;
 	}
 
+	public Peça retirarPeça(Posicao pos) {
+		if (!posicaoExiste(pos)) {
+			throw new TabuleiroException("Posição fora do tabuleiro.");
+		}
+		if (peça(pos) == null) {
+			return null;
+		}
+		Peça aux = peça(pos);
+		aux.posicao = null;
+		peças[pos.getLinha()][pos.getColuna()] = null;
+		return aux;
+	}
+
 	private boolean posicaoExiste(int linha, int coluna) {
 		return linha >= 0 && linha < linhas && coluna >= 0 && coluna < colunas;
 	}
