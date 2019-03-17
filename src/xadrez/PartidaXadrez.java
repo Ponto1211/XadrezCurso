@@ -24,12 +24,16 @@ public class PartidaXadrez {
 		return mat;
 	}
 
+	private void colocarNovaPeça(char c, int l, PeçaXadrez peça) {
+		tabuleiro.colocarPeça(peça, new PosicaoXadrez(c, l).toPosicao());
+	}
+
 	private void PosicaoInicial() {
-		tabuleiro.colocarPeça(new Torre(tabuleiro, Cor.BRANCO), new Posicao(7, 0));
-		tabuleiro.colocarPeça(new Torre(tabuleiro, Cor.BRANCO), new Posicao(7, 7));
-		tabuleiro.colocarPeça(new Torre(tabuleiro, Cor.PRETO), new Posicao(0, 0));
-		tabuleiro.colocarPeça(new Torre(tabuleiro, Cor.PRETO), new Posicao(0, 7));
-		tabuleiro.colocarPeça(new Rei(tabuleiro, Cor.BRANCO), new Posicao(7, 4));
-		tabuleiro.colocarPeça(new Rei(tabuleiro, Cor.PRETO), new Posicao(0, 4));
+		colocarNovaPeça('a',1,new Torre(tabuleiro, Cor.BRANCO));
+		colocarNovaPeça('h',1,new Torre(tabuleiro, Cor.BRANCO));
+		colocarNovaPeça('a',8,new Torre(tabuleiro, Cor.PRETO));
+		colocarNovaPeça('h',8,new Torre(tabuleiro, Cor.PRETO));
+		colocarNovaPeça('e',1,new Rei(tabuleiro, Cor.BRANCO));
+		colocarNovaPeça('e',8,new Rei(tabuleiro, Cor.PRETO));
 	}
 }
