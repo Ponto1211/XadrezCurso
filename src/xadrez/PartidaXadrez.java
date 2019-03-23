@@ -9,10 +9,22 @@ import xadrez.peças.Torre;
 public class PartidaXadrez {
 
 	private Tabuleiro tabuleiro;
+	private int turno;
+	private Cor vez;
 
 	public PartidaXadrez() {
 		tabuleiro = new Tabuleiro(8, 8);
+		turno = 1;
+		vez = Cor.BRANCO;
 		PosicaoInicial();
+	}
+
+	public int getTurno() {
+		return turno;
+	}
+
+	public Cor getVez() {
+		return vez;
 	}
 
 	public PeçaXadrez[][] getPeças() {
@@ -38,6 +50,7 @@ public class PartidaXadrez {
 		validarOrigem(ori);
 		validarDestino(ori, des);
 		Peça peçaCapturada = mover(ori, des);
+		atualizarTurno();
 		return (PeçaXadrez) peçaCapturada;
 	}
 
@@ -52,6 +65,9 @@ public class PartidaXadrez {
 		if (!tabuleiro.temPeça(pos)) {
 			throw new XadrezException("Não há peça nessa posição.");
 		}
+		if (vez != ((PeçaXadrez) tabuleiro.peça(pos)).getCor()) {
+			throw new XadrezException("Essa peça não é sua.");
+		}
 		if (!tabuleiro.peça(pos).haMovimento()) {
 			throw new XadrezException("Sem movimentos possiveis para esta peça.");
 		}
@@ -62,6 +78,11 @@ public class PartidaXadrez {
 			throw new XadrezException("Este movimento não é possivel");
 		}
 
+	}
+
+	private void atualizarTurno() {
+		turno++;
+		vez = (vez.equals(Cor.BRANCO)) ? Cor.PRETO : Cor.BRANCO;
 	}
 
 	private void colocarNovaPeça(char c, int l, PeçaXadrez peça) {
