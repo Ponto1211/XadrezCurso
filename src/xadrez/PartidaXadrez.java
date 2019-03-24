@@ -2,12 +2,12 @@ package xadrez;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import tabuleiro.Peça;
 import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
+import xadrez.peças.Bispo;
 import xadrez.peças.Peao;
 import xadrez.peças.Rei;
 import xadrez.peças.Torre;
@@ -190,6 +190,8 @@ public class PartidaXadrez {
 		colocarNovaPeça('e', 1, new Rei(tabuleiro, Cor.BRANCO));
 		colocarNovaPeça('a', 1, new Torre(tabuleiro, Cor.BRANCO));
 		colocarNovaPeça('h', 1, new Torre(tabuleiro, Cor.BRANCO));
+		colocarNovaPeça('c', 1, new Bispo(tabuleiro, Cor.BRANCO));
+		colocarNovaPeça('f', 1, new Bispo(tabuleiro, Cor.BRANCO));
 		colocarNovaPeça('a', 2, new Peao(tabuleiro, Cor.BRANCO));
 		colocarNovaPeça('b', 2, new Peao(tabuleiro, Cor.BRANCO));
 		colocarNovaPeça('c', 2, new Peao(tabuleiro, Cor.BRANCO));
@@ -202,6 +204,8 @@ public class PartidaXadrez {
 		colocarNovaPeça('e', 8, new Rei(tabuleiro, Cor.PRETO));
 		colocarNovaPeça('a', 8, new Torre(tabuleiro, Cor.PRETO));
 		colocarNovaPeça('h', 8, new Torre(tabuleiro, Cor.PRETO));
+		colocarNovaPeça('c', 8, new Bispo(tabuleiro, Cor.PRETO));
+		colocarNovaPeça('f', 8, new Bispo(tabuleiro, Cor.PRETO));
 		colocarNovaPeça('a', 7, new Peao(tabuleiro, Cor.PRETO));
 		colocarNovaPeça('b', 7, new Peao(tabuleiro, Cor.PRETO));
 		colocarNovaPeça('c', 7, new Peao(tabuleiro, Cor.PRETO));
