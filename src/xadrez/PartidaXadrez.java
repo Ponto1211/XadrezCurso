@@ -82,7 +82,8 @@ public class PartidaXadrez {
 	}
 
 	private Peça mover(Posicao origem, Posicao destino) {
-		Peça p = tabuleiro.retirarPeça(origem);
+		PeçaXadrez p = (PeçaXadrez) tabuleiro.retirarPeça(origem);
+		p.aumentarContagem();
 		Peça capturada = tabuleiro.retirarPeça(destino);
 		tabuleiro.colocarPeça(p, destino);
 		if (capturada != null) {
@@ -93,7 +94,8 @@ public class PartidaXadrez {
 	}
 
 	private void desmover(Posicao origem, Posicao destino, Peça capturada) {
-		Peça p = tabuleiro.retirarPeça(destino);
+		PeçaXadrez p = (PeçaXadrez) tabuleiro.retirarPeça(destino);
+		p.reduzirContagem();
 		tabuleiro.colocarPeça(p, origem);
 		if (capturada != null) {
 			tabuleiro.colocarPeça(capturada, destino);
@@ -170,7 +172,7 @@ public class PartidaXadrez {
 						Peça capturada = mover(origem, destino);
 						boolean teste = testarCheck(c);
 						desmover(origem, destino, capturada);
-						return !teste;
+						return teste;
 					}
 				}
 			}
